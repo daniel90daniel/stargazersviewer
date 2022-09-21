@@ -14,31 +14,17 @@ import {
   Image
 } from 'react-native';
 
-import RenderItem from '../components/RenderItem';
-
-import { Colors } from '../components';
-
+import { Colors, RenderItem } from '../components';
 
 const Home = ({ navigation }) => {
 
   const [owner, onChangeOwner] = useState(null);
-  const [ownerRequired, onChangeOwnerRequired] = useState(null);
   const [repository, onChangeRepository] = useState(null);
-  const [repositoryRequired, onChangeRepositoryRequired] = useState(null);
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
   const onPress = () => {
-    /*if(!owner || !repository){
-      onChangeOwnerRequired('Insert owner *required');
-      onChangeRepositoryRequired('Insert name of the repository *required');
-    }
-
-    if(owner != null && repository != null){
-      setData([]);
-      setLoading(!isLoading);
-    }*/
-    if(data.length > 0)
+    if(data && data.length > 0)
       setData([]);
 
     if( !owner && !repository){
@@ -53,10 +39,10 @@ const Home = ({ navigation }) => {
       var query = repository ?? "";
       query = owner ? query+"user:"+owner : query;
       fetch('https://api.github.com/search/repositories?q='+encodeURIComponent(query)+'&sort=created&order=asc%27')
-      .then((response) => response.json())
-      .then((json) => {
-          setData(json.items);
-      })
+        .then((response) => response.json())
+        .then((json) => {
+            setData(json.items);
+        })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
     }
@@ -85,20 +71,20 @@ const Home = ({ navigation }) => {
             style={styles.input}
             onChangeText={onChangeOwner}
             value={owner}
-            placeholder={ownerRequired ? ownerRequired : "Insert owner"}
-            placeholderTextColor = { ownerRequired ? "red" : Colors.darker }
+            placeholder={"Insert owner"}
+            placeholderTextColor = {Colors.darker}
 
           />
           <TextInput
             style={styles.input}
             onChangeText={onChangeRepository}
             value={repository}
-            placeholder={repositoryRequired ? repositoryRequired : "Insert name of the repository"}
-            placeholderTextColor = { repositoryRequired ? "red" : Colors.darker }
+            placeholder={"Insert name of the repository"}
+            placeholderTextColor = {Colors.darker}
           />
-          <TouchableHighlight onPress={onPress} activeOpacity={isLoading ? 1 : 0.5} style={styles.button}>
+          <TouchableHighlight onPress={onPress} activeOpacity={isLoading ? 1 : 0.7} style={styles.button}>
             <View style={styles.buttonView}>
-              {isLoading ? <ActivityIndicator size={'small'} color={Colors.buttonText}/> : null}
+              {isLoading ? <ActivityIndicator size={'small'} color={Colors.white}/> : null}
               <Text style={styles.buttonText}>Search</Text>
             </View>
           </TouchableHighlight>
@@ -123,7 +109,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    backgroundColor: Colors.button,
+    backgroundColor: Colors.blu,
     borderRadius: 20,
     height: 40,
     padding: 10,
@@ -134,10 +120,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1, 
-    flexDirection:'row'
+    flexDirection:'row',
+    width: 150
   },
   buttonText: {
-    color: Colors.buttonText,
+    color: Colors.white,
     fontSize: 14,
     fontWeight: '600',
   },
@@ -148,6 +135,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 20,
     padding: 10,
+    backgroundColor: Colors.white,
+    borderColor: Colors.darkgrey
   },
   sectionTitle: {
     fontSize: 17,

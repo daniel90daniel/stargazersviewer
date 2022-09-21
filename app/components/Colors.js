@@ -6,6 +6,7 @@ export default {
   dark: '#444',
   darker: '#222',
   black: '#000',
-  button: '#0D1117',
-  buttonText: '#58A6FF'
+  blu: '#58A6FF',
+  grey: '#EDEDED',
+  darkgrey: '#d8d6d6'
 };

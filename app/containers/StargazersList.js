@@ -17,15 +17,14 @@ const StargazersList = ({ navigation, route }) => {
   const [isLoading, setLoading] = useState(true);
  
   useEffect(() => {
-      setData([]);
-      fetch(route.params.link)
-      .then((response) => response.json())
-      .then((json) => {
-          setData(json)
-      })
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
-    
+    setData([]);
+    fetch(route.params.link)
+    .then((response) => response.json())
+    .then((json) => {
+      setData(json)
+    })
+    .catch((error) => console.error(error))
+    .finally(() => setLoading(false));
   }, []);
 
   const isDarkMode = useColorScheme() === 'dark';
@@ -40,9 +39,9 @@ const StargazersList = ({ navigation, route }) => {
       {
         isLoading ? 
         <View style={styles.viewIndicator}>
-            <ActivityIndicator size={'small'} color={Colors.dark}/>
+          <ActivityIndicator size={'small'} color={Colors.dark}/>
         </View> : 
-         <FlatList
+        <FlatList
           style={styles.flatlist}
           data={data}
           keyExtractor={(item, index) => index}
@@ -51,7 +50,6 @@ const StargazersList = ({ navigation, route }) => {
           )}
         />
       }
-       
     </SafeAreaView>
   );
 };

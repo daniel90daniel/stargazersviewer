@@ -29,8 +29,7 @@ const RenderItem = (props) => {
                     <Text style={styles.stargazersTitle}>Stargazers count</Text>
                     <Text style={styles.stargazersDescription}>{repo.stargazers_count}</Text>
                 </View>
-                
-              </View>
+            </View>
         </TouchableOpacity>
     )
 };

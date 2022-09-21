@@ -20,8 +20,7 @@ const RenderItemStargazers = (props) => {
                 <View style={styles.rowDesc}>
                     <Text numberOfLines={1} style={styles.sectionDescription}>{repo.login}</Text>
                 </View>
-                
-              </View>
+            </View>
         </View>
     )
 };

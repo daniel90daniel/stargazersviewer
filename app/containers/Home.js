@@ -138,19 +138,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderColor: Colors.darkgrey
   },
-  sectionTitle: {
-    fontSize: 17,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 3,
-    fontSize: 15,
-    fontWeight: '400',
-    color: Colors.buttonText,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
   flatlist: {
     flex: 1, 
     width:'100%'
